@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <View
+        android:id="@+id/horizaontalLine"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_margin="1.5dp"
@@ -17,7 +18,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/courseId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -29,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/courseGpa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
@@ -41,14 +42,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/courseGrade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/example_course_grade"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="25sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView2"
-            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
