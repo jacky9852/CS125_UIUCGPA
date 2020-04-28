@@ -3,5 +3,8 @@
     <string name="gpa_average_calculator">Find Average GPA</string>
     <string name="gpa_calculator">Calculate GPA</string>
     <string name="cs_125">CS125</string>
+    <string name="gpa_average_calculator_header1">Class</string>
+    <string name="gpa_average_calculator_header2">Letter Grade</string>
+    <string name="gpa_average_calculator_header3">GPA</string>
     <string name="app_title">UIUC GPA Tools</string>
 </resources>
