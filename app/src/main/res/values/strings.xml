@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CS125_UIUCGPA</string>
+    <string name="gpa_average_calculator">Find Average GPA</string>
+    <string name="gpa_calculator">Calculate GPA</string>
+    <string name="cs_125">CS125</string>
+    <string name="app_title">UIUC GPA Tools</string>
 </resources>

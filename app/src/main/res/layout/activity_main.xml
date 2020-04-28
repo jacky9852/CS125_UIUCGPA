@@ -11,20 +11,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
-        android:text="CS125"
+        android:text="@string/cs_125"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="42sp"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.167" />
 
     <TextView
         android:id="@+id/title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UIUC GPA Tools"
+        android:layout_marginTop="6dp"
         android:background="#00000000"
+        android:text="@string/app_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="250dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/averageGpaButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/gpa_average_calculator"
+        app:layout_constraintBottom_toTopOf="@+id/gpaCalculatorButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title2" />
+
+    <Button
+        android:id="@+id/gpaCalculatorButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="@string/gpa_calculator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averageGpaButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
