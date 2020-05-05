@@ -1,5 +1,4 @@
 
-
 // Use chunk_ongoing_game.xml for ongoing game entries
 chunk = getLayoutInflater().inflate(R.layout.chunk_ongoing_game, ongoingLayout, false);
                               // Add it to the ongoing games list
