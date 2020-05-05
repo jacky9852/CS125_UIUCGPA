@@ -6,7 +6,7 @@
     <string name="gpa_average_calculator_header1">Course</string>
     <string name="gpa_average_calculator_header2">Letter Grade</string>
     <string name="gpa_average_calculator_header3">GPA</string>
-    <string name="app_title">UIUC GPA Tools</string>
+    <string name="app_title">UIUC GPA Predictor</string>
     <string name="example_course_name"> </string>
     <string name="example_course_grade">A</string>
     <string name="example_course_gpa">4.00</string>
