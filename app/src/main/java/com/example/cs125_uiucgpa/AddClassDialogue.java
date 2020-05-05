@@ -35,6 +35,8 @@ public class AddClassDialogue extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String courseId = editCourseId.getText().toString();
+                courseId = courseId.trim();
+                courseId = courseId.toUpperCase();
                 listener.applyTexts(courseId);
             }
         });

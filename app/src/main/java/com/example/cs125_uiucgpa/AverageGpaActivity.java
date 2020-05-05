@@ -61,17 +61,17 @@ public class AverageGpaActivity extends AppCompatActivity implements AddClassDia
             allData.set(i, replacement);
         }
 
-        int end = 0;
-        String dataSetYear = "2019";
-        for (int i = 0; i < allData.size(); i++) {
-            if (!(allData.get(i)[0].equals(dataSetYear))){
-                end = i;
-                break;
-            }
-        }
-
-        allData = allData.subList(0, end);
-        System.out.println(allData);
+//        int end = 0;
+//        String dataSetYear = "2019";
+//        for (int i = 0; i < allData.size(); i++) {
+//            if (!(allData.get(i)[0].equals(dataSetYear))){
+//                end = i;
+//                break;
+//            }
+//        }
+//
+//        allData = allData.subList(0, end);
+//        System.out.println(allData);
 
         addNewCourse = findViewById(R.id.addNewCourse);
         totalGpa = findViewById(R.id.total);
@@ -110,13 +110,15 @@ public class AverageGpaActivity extends AppCompatActivity implements AddClassDia
         if (setCourseId.equals("cancelled")) {
             addedClassesLayout.removeView(chunk);
         } else {
-            chunkCourseId.setText(setCourseId);
             String[] part = setCourseId.split("(?<=\\D)(?=\\d)");
+            part[0] = part[0].trim();
+            part[1] = part[1].trim();
             String courseSubject = part[0];
             int courseNumber = Integer.parseInt(part[1]);
             double courseAverageGpa = AvgGpaCalc.avgGpaCalc(allData, courseSubject, courseNumber);
             chunkCourseGpa.setText(Double.toString(courseAverageGpa).substring(0, 4));
-
+            setCourseId = part[0] + " " + part[1];
+            chunkCourseId.setText(setCourseId);
             String courseLetterGrade;
 
             if (courseAverageGpa > 3.67) {
