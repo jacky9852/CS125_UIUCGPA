@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.averageGpaButton).setOnClickListener(unused -> {
             Intent intent = new Intent(this, AverageGpaActivity.class);
             startActivity(intent);
-            finish();
         });
     }
 

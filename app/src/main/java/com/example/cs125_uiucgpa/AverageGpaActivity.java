@@ -29,11 +29,11 @@ public class AverageGpaActivity extends AppCompatActivity implements AddClassDia
     String stringTotalGpa;
     private Button addNewCourse;
     private List<String[]> allData;
-    private List<String[]> all2019Data;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.average_gpa);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Loads in data from the database to allData
         try {
