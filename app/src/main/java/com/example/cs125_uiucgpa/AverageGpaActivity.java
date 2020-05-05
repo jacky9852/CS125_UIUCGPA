@@ -16,10 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AverageGpaActivity extends AppCompatActivity implements AddClassDialogue.AddClassDialogListerner {
-    private double total = 0;
+    private double total  = 0;
+    private double totalGpaAdded = 0;
+    private int totalClassesAdded = 0;
     private TextView gpa;
     private TextView totalGpa;
     private TextView chunkCourseId;
+    private TextView chunkCourseGpa;
+    private TextView chunkCourseLetterGrade;
     private View chunk;
     private LinearLayout addedClassesLayout;
     String stringTotalGpa;
@@ -83,12 +87,13 @@ public class AverageGpaActivity extends AppCompatActivity implements AddClassDia
 
             //Used for changing course name based on dialog
             chunkCourseId = chunk.findViewById(R.id.courseId);
+            chunkCourseGpa = chunk.findViewById(R.id.courseGpa);
+            chunkCourseLetterGrade = chunk.findViewById(R.id.courseGrade);
 
             //Tally GPA total
             gpa = chunk.findViewById(R.id.courseGpa);
             total += Double.valueOf( gpa.getText().toString());
             stringTotalGpa = Double.toString(total);
-            totalGpa.setText(stringTotalGpa);
 
             // Add it to the ongoing games list
             addedClassesLayout.addView(chunk);
@@ -106,6 +111,45 @@ public class AverageGpaActivity extends AppCompatActivity implements AddClassDia
             addedClassesLayout.removeView(chunk);
         } else {
             chunkCourseId.setText(setCourseId);
+            String[] part = setCourseId.split("(?<=\\D)(?=\\d)");
+            String courseSubject = part[0];
+            int courseNumber = Integer.parseInt(part[1]);
+            double courseAverageGpa = AvgGpaCalc.avgGpaCalc(allData, courseSubject, courseNumber);
+            chunkCourseGpa.setText(Double.toString(courseAverageGpa).substring(0, 4));
+
+            String courseLetterGrade;
+
+            if (courseAverageGpa > 3.67) {
+                courseLetterGrade = "A+/A";
+            } else if (courseAverageGpa > 3.33) {
+                courseLetterGrade = "A-";
+            } else if (courseAverageGpa > 3.00) {
+                courseLetterGrade = "B+";
+            } else if (courseAverageGpa > 2.67) {
+                courseLetterGrade = "B";
+            } else if (courseAverageGpa > 2.33) {
+                courseLetterGrade = "B-";
+            } else if (courseAverageGpa > 2.00) {
+                courseLetterGrade = "C+";
+            } else if (courseAverageGpa > 1.67) {
+                courseLetterGrade = "C";
+            } else if (courseAverageGpa > 1.33) {
+                courseLetterGrade = "C-";
+            } else if (courseAverageGpa > 1.00) {
+                courseLetterGrade = "D+";
+            } else if (courseAverageGpa > 0.67) {
+                courseLetterGrade = "D";
+            } else if (courseAverageGpa > 0.00) {
+                courseLetterGrade = "D-";
+            } else {
+                courseLetterGrade = "Run";
+            }
+            chunkCourseLetterGrade.setText(courseLetterGrade);
+
+            totalGpaAdded += courseAverageGpa;
+            totalClassesAdded++;
+
+            totalGpa.setText(Double.toString(totalGpaAdded/totalClassesAdded).substring(0, 4));
         }
     }
 }

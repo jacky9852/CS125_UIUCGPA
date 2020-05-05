@@ -4,27 +4,28 @@ package com.example.cs125_uiucgpa;
 import java.util.List;
 
 public class AvgGpaCalc {
-    private int totalStudentCount;
-    private int numA;
-    private int numaMin;
-    private int numbPlus;
-    private int numB;
-    private int numbMin;
-    private int numcPlus;
-    private int numC;
-    private int numcMin;
-    private int numdPlus;
-    private int numD;
-    private int numdMin;
-    private int numF;
 
     // Making sure the class numbers are same. And Calc Avg GPA.
-    public double avgGpaCalc(List<String[]> all2019Data, String name, int classNum) {
+    public static double avgGpaCalc(List<String[]> all2019Data, String name, int classNum) {
+        int totalStudentCount = 0;
+        int numA = 0;
+        int numaMin = 0;
+        int numbPlus = 0;
+        int numB = 0;
+        int numbMin = 0;
+        int numcPlus = 0;
+        int numC = 0;
+        int numcMin = 0;
+        int numD = 0;
+        int numdPlus = 0;
+        int numdMin = 0;
+        int numF = 0;
+
         double avgGpa = 0;
         //Run down the list to find all the same classes.
-        for (int i = 0; all2019Data.get(i)[3].equals(name); i++) {
+        for (int i = 0; i < all2019Data.size(); i++) {
             // Making sure they have the same class numbers.
-            while (Integer.parseInt(all2019Data.get(i)[4]) == classNum) {
+            if (name.equals(all2019Data.get(i)[3]) && Integer.parseInt(all2019Data.get(i)[4]) == classNum) {
                 //Adding all the students in that class and count the total number of students in the same class.
                 numA = Integer.parseInt(all2019Data.get(i)[6]) + Integer.parseInt(all2019Data.get(i)[7]);
                 numaMin = Integer.parseInt(all2019Data.get(i)[8]);
