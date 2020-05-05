@@ -1,6 +1,8 @@
 
 package com.example.cs125_uiucgpa;
 
+import java.util.List;
+
 public class AvgGpaCalc {
     private int totalStudentCount;
     private int numA;
@@ -17,12 +19,12 @@ public class AvgGpaCalc {
     private int numF;
 
     // Making sure the class numbers are same. And Calc Avg GPA.
-    public double avgGpaCalc(String name, int classNum) {
+    public double avgGpaCalc(List<String[]> all2019Data, String name, int classNum) {
         double avgGpa = 0;
         //Run down the list to find all the same classes.
         for (int i = 0; all2019Data.get(i)[3].equals(name); i++) {
             // Making sure they have the same class numbers.
-            while (all2019Data.get(i)[4] == classNum) {
+            while (Integer.parseInt(all2019Data.get(i)[4]) == classNum) {
                 //Adding all the students in that class and count the total number of students in the same class.
                 numA = Integer.parseInt(all2019Data.get(i)[6]) + Integer.parseInt(all2019Data.get(i)[7]);
                 numaMin = Integer.parseInt(all2019Data.get(i)[8]);
