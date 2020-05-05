@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        System.out.println("test");
     }
 
 

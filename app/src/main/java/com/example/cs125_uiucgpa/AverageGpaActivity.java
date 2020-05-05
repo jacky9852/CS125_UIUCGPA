@@ -8,6 +8,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AverageGpaActivity extends AppCompatActivity implements AddClassDialogue.AddClassDialogListerner {
     private double total = 0;
     private TextView gpa;
@@ -17,10 +24,50 @@ public class AverageGpaActivity extends AppCompatActivity implements AddClassDia
     private LinearLayout addedClassesLayout;
     String stringTotalGpa;
     private Button addNewCourse;
+    private List<String[]> allData;
+    private List<String[]> all2019Data;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.average_gpa);
+
+        //Loads in data from the database to allData
+        try {
+            // Create an object of file reader
+            // class with CSV file as a parameter.
+            //Reader filereader = new Reader( new InputStreamReader(c.getAssets().open("SOCIAL_POSTS.csv")));
+
+            // create csvReader object and skip first Line
+            CSVReader csvReader = new CSVReaderBuilder(new InputStreamReader(getAssets().open("uiuc-gpa-dataset.csv")))
+                    .withSkipLines(1)
+                    .build();
+            allData = csvReader.readAll();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            List<String[]> errorList = new ArrayList<>();
+            String[] error = new String[1];
+            error[0] = "error";
+            errorList.add(error);
+            allData = errorList;
+        }
+
+        for (int i = 0; i < allData.size(); i++) {
+            String[] replacement = allData.get(i)[0].split(",");
+            allData.set(i, replacement);
+        }
+
+        int end = 0;
+        String dataSetYear = "2019";
+        for (int i = 0; i < allData.size(); i++) {
+            if (!(allData.get(i)[0].equals(dataSetYear))){
+                end = i;
+                break;
+            }
+        }
+
+        allData = allData.subList(0, end);
+        System.out.println(allData);
 
         addNewCourse = findViewById(R.id.addNewCourse);
         totalGpa = findViewById(R.id.total);
